@@ -1,0 +1,24 @@
+<template>
+  <!--<require from="bootstrap/css/bootstrap.css"></require>-->
+
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <i class="fa fa-user"></i>
+        <span>Homepage</span>
+      </a>
+    </div>
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#whs-view">
+        <i class="fa fa-user"></i>
+        <span>WHS View</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <router-view class="col-md-8"></router-view>
+    </div>
+  </div>
+</template>
