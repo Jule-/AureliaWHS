@@ -1,13 +1,22 @@
 import * as WHS from 'whs';
-// import * as PHYSICS from 'physics-module-ammonext';
+// import PHYSICS from 'physics-module-ammonext';
+
+import DisposeSceneModule from '../resources/whs-modules/dispose-scene-module';
 
 export default class WhsView {
+  app = null;
+
   construtor() {
 
   }
 
   attached() {
     this.initializeScene();
+  }
+
+  detached() {
+    this.app.dispose();
+    this.app = null;
   }
 
   initializeScene() {
@@ -36,7 +45,8 @@ export default class WhsView {
       //   ammo: 'https://cdn.rawgit.com/WhitestormJS/physics-module-ammonext/75634e80/vendor/ammo.js'
       // }),
       new WHS.app.ResizeModule(),
-      new WHS.controls.OrbitModule()
+      new WHS.controls.OrbitModule(),
+      new DisposeSceneModule()
     ]);
 
     // Sphere
