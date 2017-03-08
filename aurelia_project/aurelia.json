@@ -135,15 +135,6 @@
           {
             "name": "whs",
             "path": "../node_modules/whs/build/whitestorm"
-          },
-          {
-            "name": "physics-module-ammonext",
-            "path": "../node_modules/physics-module-ammonext/build",
-            "main": "physics-module",
-            "deps": ["whs"],
-            "resources": [
-              "worker.js"
-            ]
           }
         ]
       }

@@ -1612,13 +1612,13 @@ debug-fabulous@0.0.X:
     lazy-debug-legacy "0.0.X"
     object-assign "4.1.0"
 
-debug@2.2.0, debug@^2.2.0, debug@~2.2.0:
+debug@2.2.0, debug@^2.1.1, debug@^2.2.0, debug@~2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
     ms "0.7.1"
 
-debug@2.3.3, debug@2.X, debug@^2.1.1:
+debug@2.3.3, debug@2.X:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.3.3.tgz#40c453e67e6e13c901ddec317af8986cda9eff8c"
   dependencies:
@@ -5343,9 +5343,17 @@ which@1, which@^1.0.5, which@^1.2.1, which@^1.2.12, which@~1.2.11:
   dependencies:
     isexe "^1.1.1"
 
-whs@^2.0.0-beta.2, whs@^2.0.0-beta.3:
+whs@^2.0.0-beta.2:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/whs/-/whs-2.0.0-beta.3.tgz#51af496774063ac46b0160e14990c2d664424013"
+  dependencies:
+    lodash-es "^4.17.4"
+    minivents "^2.0.2"
+    three "^0.84.0"
+
+whs@^2.0.0-beta.5:
+  version "2.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/whs/-/whs-2.0.0-beta.5.tgz#6f2f4889f0a5bee7f4886edcf12ecac3419ebfee"
   dependencies:
     lodash-es "^4.17.4"
     minivents "^2.0.2"

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AureliaWHS - (without Aurelia)</title>
+  </head>
+
+  <body>
+    <!-- WhitestormJS library -->
+    <script src="node_modules/whs/build/whitestorm.js"></script>
+    <!-- App written in WhitestormJS -->
+    <script src="src/app-without/without.js"></script>
+
+    <div style="position: absolute; top: 10px; left: 10px;">
+      <button onclick="initializeWHS();">Initialize</button>
+      <button onclick="clean(true);">Clean (full => ok)</button>
+      <button onclick="clean(false);">Clean (light => throw)</button>
+      <button onclick="startAnimate();">Animate</button>
+      <button onclick="stopAnimate();">Stop Animate</button>
+    </div>
+  </body>
+</html>
