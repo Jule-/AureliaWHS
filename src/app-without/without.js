@@ -17,10 +17,10 @@ function initializeWHS() {
       bgColor: 0x162129,
 
       renderer: {
-        antialias: true,
+        antialias: true/*,
         shadowmap: {
           type: THREE.PCFSoftShadowMap
-        }
+        }*/
       }
     }, { shadow: true }),
     new WHS.controls.OrbitModule()
@@ -82,8 +82,10 @@ function initializeWHS() {
   app.start();
 }
 
+window.resetCount = 0;
 let stopAnimation = false;
 function animate() {
+  window.resetCount++;
   clean(true);
   initializeWHS();
 
@@ -95,28 +97,28 @@ function animate() {
 }
 
 function disposeAll3dObjects() {
-  console.debug('[DisposeSceneModule] Try to dispose %s children.', app.children.length);
+  // console.debug('[DisposeSceneModule] Try to dispose %s children.', app.children.length);
 
   let lvl = '';
   function disposeChildren(child) {
     lvl += '  ';
-    console.debug('[DisposeSceneModule]' + lvl + ' Try to dispose', child, !!child.native.geometry, !!child.native.material);
+    // console.debug('[DisposeSceneModule]' + lvl + ' Try to dispose', child, !!child.native.geometry, !!child.native.material);
 
     if (child.children) {
       child.children.forEach(disposeChildren);
     }
 
     if (child.native.geometry) {
-      console.debug('[DisposeSceneModule]' + lvl + ' geometry');
+      // console.debug('[DisposeSceneModule]' + lvl + ' geometry');
       child.native.geometry.dispose();
     }
     if (child.native.material) {
       if (child.native.material.map) {
-        console.debug('[DisposeSceneModule]' + lvl + ' texture');
+        // console.debug('[DisposeSceneModule]' + lvl + ' texture');
         child.native.material.map.dispose();
       }
 
-      console.debug('[DisposeSceneModule]' + lvl + ' material');
+      // console.debug('[DisposeSceneModule]' + lvl + ' material');
       child.native.material.dispose();
     }
 
@@ -126,11 +128,12 @@ function disposeAll3dObjects() {
   }
 
   app.children.forEach(disposeChildren);
+  app.children.length = 0;
 }
 
 function clean(disposeSceneGraph) {
   if (!app) {
-    console.log('Nothing to clean. Initialize scene first.');
+    // console.log('Nothing to clean. Initialize scene first.');
     return;
   }
 
@@ -149,6 +152,9 @@ function clean(disposeSceneGraph) {
    * gl.getExtension('WEBGL_lose_context').loseContext();
    *
    */
+
+  app.$rendering.dispose();
+  app.stop();
 
   sphere = null;
   app = null;

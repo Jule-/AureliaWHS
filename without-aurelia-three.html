@@ -18,5 +18,13 @@
     <script src="node_modules/whs/build/whitestorm.js"></script>
     <!-- App written in WhitestormJS -->
     <script src="src/app-without/without-three.js"></script>
+
+    <div style="position: absolute; top: 10px; left: 10px;">
+      <button onclick="initializeTHREE();">Initialize</button>
+      <button onclick="clean(true);">Clean (full => ok)</button>
+      <button onclick="clean(false);">Clean (light => throw)</button>
+      <button onclick="startAnimate();">Animate</button>
+      <button onclick="stopAnimate();">Stop Animate</button>
+    </div>
   </body>
 </html>

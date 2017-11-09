@@ -22,6 +22,8 @@ function initializeTHREE() {
   let material = new THREE.MeshBasicMaterial({ map: texture, wireframe: true });
   let mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
+
+  renderer.render(scene, camera);
 }
 
 function createImage() {
@@ -50,7 +52,7 @@ function disposeAll3dObjects() {
   let lvl = '';
   function disposeChildren(child) {
     lvl += '  ';
-    console.debug(lvl + '[DisposeSceneModule] Try to dispose', child, !!child.geometry, !!child.material);
+    console.debug('[DisposeSceneModule]' + lvl + ' Try to dispose', child, !!child.geometry, !!child.material);
 
     if (child.children) {
       child.children.forEach(disposeChildren);
@@ -60,16 +62,16 @@ function disposeAll3dObjects() {
      * Even material and geometry seems to not leaking when we remove the context and not dispose them.
      */
     if (child.geometry) {
-      console.debug(lvl + '[DisposeSceneModule] geometry');
+      console.debug('[DisposeSceneModule]' + lvl + ' geometry');
       child.geometry.dispose();
     }
     if (child.material) {
       if (child.material.map) {
-        console.debug(lvl + '[DisposeSceneModule] texture');
+        console.debug('[DisposeSceneModule]' + lvl + ' texture');
         child.material.map.dispose();
       }
 
-      console.debug(lvl + '[DisposeSceneModule] material');
+      console.debug('[DisposeSceneModule]' + lvl + ' material');
       child.material.dispose();
     }
 
@@ -108,5 +110,17 @@ function clean(disposeSceneGraph) {
   camera = scene = renderer = null;
 }
 
-initializeTHREE();
-animate();
+// initializeTHREE();
+// animate();
+
+function startAnimate() {
+  if (!app) {
+    initializeTHREE();
+  }
+  stopAnimation = false;
+  animate();
+}
+
+function stopAnimate() {
+  stopAnimation = true;
+}
